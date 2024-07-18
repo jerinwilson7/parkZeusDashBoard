@@ -5,27 +5,27 @@ import { useState } from "react"
 
 export const CameraFeed = () => {
 
-    const {gates} = usePark()
+  const { gates } = usePark();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    const [currentIndex, setCurrentIndex] = useState(0)
+  if (!gates || gates.length === 0) {
+    return <div>Loading.....</div>;
+  }
 
-    const prevSlide = ()=>{
-        const isFirstSlide = currentIndex === 0;
-        const newSlide = isFirstSlide ? gates?.length-1 : currentIndex-1;
-        setCurrentIndex(newSlide)
-    }
-    const nextSlide = ()=>{
-        const isLastSlide = currentIndex === gates?.length-1;
-        const newSlide = isLastSlide ? 0 : currentIndex+1;
-        setCurrentIndex(newSlide)
-    }
+  const currentGate = gates[currentIndex];
+  const currentCamera = currentGate.cameras[0]; 
 
-   if(!gates){
-    
-    return <div>Loading.....</div>
+  const prevSlide = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newSlide = isFirstSlide ? gates.length - 1 : currentIndex - 1;
+    setCurrentIndex(newSlide);
+  };
 
-   }
-
+  const nextSlide = () => {
+    const isLastSlide = currentIndex === gates.length - 1;
+    const newSlide = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newSlide);
+  };
 
   return (
     <div className="flex flex-col bg-white p-6 basis-1/2 rounded-md col-span-1 shadow-md">
@@ -52,7 +52,7 @@ export const CameraFeed = () => {
       </div>
 
       <div>
-        <p>{gates[currentIndex].name}</p>
+        <p>{gates[currentIndex].name} / {currentCamera.name}</p>
       </div>
     </div>
   </div>
@@ -60,4 +60,3 @@ export const CameraFeed = () => {
 }
 
 
-// kdsfmmklmjdjfsda sdasf

@@ -6,13 +6,15 @@ export type ParkProviderType = {
 export type GatesType = {
     id: number;
     name: string;
-    cameras: {
-      id: number;
-      name: string;
-      laneId: null | string;
-    };
+    cameras:CameraType[]
+   
   };
   
+  type CameraType = {
+        id: number;
+        name: string;
+        laneId: null | string;
+  }
 
 type GetUserType = {
     type:'user/loaded',
@@ -32,13 +34,19 @@ type Loading={
     type:'loading',
 }
 
+type GetCameras = {
+    type:'cameras/loaded'
+    payload:CameraType[]
+}
+
 
 export type InitialState = {
     userName:string
     alerts:string[]
     gates:GatesType[]
     isLoading:boolean
+    cameras:CameraType[]
 }
 
 
-export type ActionType = GetUserType | GetAlertsType | GetGatesType |Loading
+export type ActionType = GetUserType | GetAlertsType | GetGatesType |Loading |GetCameras

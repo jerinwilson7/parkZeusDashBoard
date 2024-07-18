@@ -16,10 +16,13 @@ const reducer = (state: InitialState, action: ActionType): InitialState => {
       return { ...state, userName: action.payload };
 
     case 'alerts/loaded':
-      return { ...state, alerts: action.payload,isLoading:false };
+      return { ...state, alerts: action.payload};
 
     case 'gates/loaded':
-        return {...state, gates:action.payload,isLoading:false}   
+        return {...state, gates:action.payload}  
+        
+    case 'cameras/loaded':
+      return {...state,cameras:action.payload,isLoading:false}    
 
     default:
       return state;
@@ -27,7 +30,7 @@ const reducer = (state: InitialState, action: ActionType): InitialState => {
 };
 
 const ParkProvider = ({ children }: ParkProviderType) => {
-  const [{ userName, alerts , gates,isLoading}, dispatch] = useReducer(reducer,{} as InitialState );
+  const [{ userName, alerts , gates,isLoading,cameras}, dispatch] = useReducer(reducer,{} as InitialState );
 
   useEffect(() => {
 
@@ -41,6 +44,7 @@ const ParkProvider = ({ children }: ParkProviderType) => {
 
         dispatch({ type: 'user/loaded', payload: response.data.username });
         dispatch({type:'gates/loaded',payload:response.data.gates})
+        dispatch({type:'cameras/loaded',payload:response.data.gates.cameras})
       } catch (error) {
         console.log('Error fetching user:', error);
       }
@@ -59,7 +63,6 @@ const ParkProvider = ({ children }: ParkProviderType) => {
         });
 
         dispatch({ type: 'alerts/loaded', payload: response.data });
-        console.log('Alerts:', response.data);
       } catch (error) {
         console.log('Error fetching alerts:', error);
       }
@@ -70,7 +73,7 @@ const ParkProvider = ({ children }: ParkProviderType) => {
   }, []);
 
   return (
-    <ParkZeusContext.Provider value={{ userName, alerts ,gates,isLoading }}>
+    <ParkZeusContext.Provider value={{ userName, alerts ,gates,isLoading,cameras }}>
       {children}
     </ParkZeusContext.Provider>
   );
