@@ -1,11 +1,11 @@
-import { usePark } from "./contexts";
+import { usePark } from "./contexts/MainContext";
 import { DashboardPage } from "./pages/DashboardPage";
 
 function App() {
   const { isLoading } = usePark();
 
   return (
-    <div className="App">
+    <div className="bg-main-bg w-screen h-full flex flex-col overscroll-y-auto">
       {isLoading ? (
         <div>Loading...</div>
       ) : (

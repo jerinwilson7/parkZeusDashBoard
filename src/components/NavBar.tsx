@@ -3,7 +3,7 @@ import searchIcon from '../assets/Images/search.svg'
 import alertIcon from '../assets/Images/alert.svg'
 import accountIcon from '../assets/Images/account.svg'
 import { FaAngleDown } from 'react-icons/fa'
-import { usePark } from '../contexts'
+import { usePark } from '../contexts/MainContext'
 
 
 export const NavBar = () => {
@@ -12,7 +12,7 @@ export const NavBar = () => {
   return (
     <div className='bg-white '>
 
-    <div className="max-w-screen-2xl mx-auto w-full px-16">
+    <div className="max-w-[1400px] mx-auto w-full px-16">
         <div className='py-5 flex items-center justify-between'>
 
         <div className="flex items-center">

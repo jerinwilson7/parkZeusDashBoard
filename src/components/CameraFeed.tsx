@@ -1,7 +1,7 @@
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
 import noFeed from '../assets/Images/nofeed.svg'
-import { usePark } from "../contexts"
 import { useState } from "react"
+import { usePark } from "../contexts/MainContext";
 
 export const CameraFeed = () => {
 

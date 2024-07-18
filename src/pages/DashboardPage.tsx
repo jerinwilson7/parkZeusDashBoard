@@ -1,17 +1,19 @@
+import { Footer } from "../components/Footer";
 import { MainLayout } from "../components/MainLayout";
 import { NavBar } from "../components/NavBar";
-import { usePark } from "../contexts";
+import { usePark } from "../contexts/MainContext";
 
 export const DashboardPage = () => {
   const { isLoading } = usePark();
   return (
-    <div className="bg-main-bg w-screen h-screen">
+    <div className="relative">
       {isLoading ? (
         <div className="flex items-center justify-center">Loading ....</div>
       ) : (
         <>
           <NavBar />
           <MainLayout />
+          <Footer/>
         </>
       )}
     </div>
