@@ -28,6 +28,7 @@ export const NavBar = () => {
             <div className='flex items-center justify-between shadow-lg rounded-lg'>
                 <input
                  type="search"
+                 placeholder='Search'
                  className='py-2.5 px-4 w-full h-full rounded-lg '
                  />
                 <button className='bg-btn-blue flex items-center -ml-2 justify-center rounded-lg w-10 h-10'>

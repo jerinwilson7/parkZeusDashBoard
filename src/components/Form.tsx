@@ -17,7 +17,7 @@ export const Form = ({handleClose}:FormType) => {
     }
 
     return (
-        <>
+        <div>
             <div className="bg-black opacity-60 fixed inset-0 z-20"></div>
 
             <div className='fixed z-30 bg-white rounded-md top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto max-h-[72%] w-1/3 '>
@@ -54,6 +54,6 @@ export const Form = ({handleClose}:FormType) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

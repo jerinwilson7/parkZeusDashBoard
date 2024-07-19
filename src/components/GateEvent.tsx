@@ -41,7 +41,7 @@ export const GateEvent = ({ unprocessedData }: GateEventType) => {
                   className="h-full w-full object-center object-cover "
                 />
               ) : (
-                <div className="flex items-center justify-center rounded-md h-full w-full bg-gray-500 text-gray-600">
+                <div className="flex items-center justify-center rounded-md h-full w-full bg-ash text-gray-600">
                   No Image
                 </div>
               )}

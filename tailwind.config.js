@@ -11,7 +11,8 @@ export default {
         'btn-blue': 'rgba(0,86,145,1)',
         'main-bg':'rgba(239,246,249,1)',
         'light-green-blue':'rgba(229,239,244,1)',
-        'inActive-bg':'rgba(229,239,244,1)'
+        'inActive-bg':'rgba(229,239,244,1)',
+        'ash':'rgba(170,170,170,1)'
       }
     },
   },

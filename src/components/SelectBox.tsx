@@ -15,7 +15,7 @@ export const SelectBox = ({labelTag,options,initialOption}:SelectBoxPropsType) =
         <select className="w-full px-2.5 py-4 rounded-xl bg-white text-gray-500 outline-none shadow-md"
         >
             {initialOption && (
-                <option value='' disabled selected>{initialOption}</option>
+                <option value=''>{initialOption}</option>
             )}
             {
                 options?.map((option,index)=>(
