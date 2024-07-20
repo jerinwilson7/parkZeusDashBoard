@@ -5,7 +5,7 @@ import accountIcon from '../assets/Images/account.svg'
 import { FaAngleDown } from 'react-icons/fa'
 import { usePark } from '../contexts/MainContext'
 import { NotificationBox } from './NotificationBox'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 
 export const NavBar = () => {
@@ -14,6 +14,21 @@ export const NavBar = () => {
     const [showNotification, setShowNotification] = useState(false)
 
     const alertCount = alerts?.length
+
+    const notificationRef = useRef<HTMLDivElement>(null)
+
+    useEffect(()=>{
+        const handler = (e:MouseEvent)=>{
+            if(!notificationRef.current?.contains(e.target as Node))
+            setShowNotification(false)
+        
+        }
+        document.addEventListener('mousedown',handler)
+    })
+   
+
+
+
   return (
     <div className='bg-white '>
 
@@ -50,7 +65,7 @@ export const NavBar = () => {
                     <div className='absolute top-0 left-5 bg-red-300 rounded-xl px-2'>{alertCount > 10 ? '10+' : alertCount}</div>
                 </button>
 
-                {showNotification && <NotificationBox/>}
+                {showNotification && <NotificationBox notificationref={notificationRef}/>}
 
             </div>
 
@@ -68,3 +83,6 @@ export const NavBar = () => {
 
   )
 }
+
+
+// dvdv
