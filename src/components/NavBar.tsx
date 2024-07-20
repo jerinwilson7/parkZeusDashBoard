@@ -4,10 +4,15 @@ import alertIcon from '../assets/Images/alert.svg'
 import accountIcon from '../assets/Images/account.svg'
 import { FaAngleDown } from 'react-icons/fa'
 import { usePark } from '../contexts/MainContext'
+import { NotificationBox } from './NotificationBox'
+import { useState } from 'react'
 
 
 export const NavBar = () => {
     const {userName,alerts} = usePark()
+
+    const [showNotification, setShowNotification] = useState(false)
+
     const alertCount = alerts?.length
   return (
     <div className='bg-white '>
@@ -37,10 +42,16 @@ export const NavBar = () => {
             </div>
 
             <div className='ml-8 relative flex'>
-                <button className='flex items-center justify-center'>
+                <button 
+                className='flex items-center justify-center'
+                onClick={()=>setShowNotification((prevState)=>!prevState)}
+                >
                     <img src={alertIcon}/>
                     <div className='absolute top-0 left-5 bg-red-300 rounded-xl px-2'>{alertCount > 10 ? '10+' : alertCount}</div>
                 </button>
+
+                {showNotification && <NotificationBox/>}
+
             </div>
 
             <div className='flex ml-8 items-center gap-3'>

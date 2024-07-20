@@ -73,9 +73,15 @@ type OrganizationsTypes = {
   payload: string[];
 };
 
+type AlertsType = {
+  id:number;
+  description:string;
+  createdAt:string
+}
+
 export type InitialState = {
   userName: string;
-  alerts: string[];
+  alerts: AlertsType[];
   gates: GatesType[];
   isLoading: boolean;
   cameras: CameraType[];
