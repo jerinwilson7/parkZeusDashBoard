@@ -42,7 +42,7 @@ const reducer = (state: InitialState, action: ActionType): InitialState => {
 
     case "organizations/loaded":
       return { ...state, organizations: action.payload };
-      
+
     case "loading/completed":
       return { ...state, isLoading: false };
 

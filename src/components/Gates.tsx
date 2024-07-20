@@ -50,4 +50,3 @@ export const Gates = () => {
     </div>
   );
 };
-// sdcsdcsdcdcsdcsdcsdcsdc sdc jdjc shit its gine its all gone k its gone it gone d

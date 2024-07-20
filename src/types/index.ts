@@ -20,7 +20,7 @@ type GetUserType = {
 };
 type GetAlertsType = {
   type: "alerts/loaded";
-  payload: string[];
+  payload: AlertsType[];
 };
 
 type GetGatesType = {
