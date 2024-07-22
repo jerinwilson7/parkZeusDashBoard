@@ -12,6 +12,8 @@ export const Form = ({handleClose}:FormType) => {
     const { vehicleDetails } = useVehicleDetails()
     const {vehicleType,organizations} = usePark()
 
+    
+
     if (vehicleDetails === undefined) {
         return null; 
     }
@@ -57,3 +59,6 @@ export const Form = ({handleClose}:FormType) => {
         </div>
     )
 }
+
+
+// asd
