@@ -1,14 +1,43 @@
+import { FormikHelpers, useFormik } from "formik";
 import { usePark } from "../contexts/MainContext";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { SelectBox } from "./SelectBox";
+import { vehicleRegistrationSchema } from "../schemas";
 
 type RegistrationFormType = {
     handleClose: ()=>void
 }
 
+type FormValuesType = {
+  tagNumber:string;
+  vehicleNumber:string
+}
+
+const onSubmit = async(values:FormValuesType,actions:FormikHelpers<FormValuesType>)=>{
+  console.log("Values submitted are :",values)
+  console.log("actions :",actions)
+
+  await new Promise ((resolve)=>setTimeout(resolve,1000))
+  actions.resetForm()
+}
+
 
 export const RegistrationForm = ({handleClose}:RegistrationFormType) => {
+
+  const {handleBlur,handleChange,values,handleSubmit,errors,touched,isSubmitting} = useFormik({
+    initialValues: {
+      tagNumber:'',
+      vehicleNumber:''
+    },
+    validationSchema:vehicleRegistrationSchema,
+    onSubmit
+  })
+
+  console.log(values)
+  console.log("Errors :",errors)
+  console.log("Touched :",touched)
+
   const { vehicleType, organizations } = usePark();
 
   return (
@@ -24,12 +53,24 @@ export const RegistrationForm = ({handleClose}:RegistrationFormType) => {
           <div className="w-full">
             <h2 className="text-xl px-1 mt-2">Vehicle Registration</h2>
 
-            <form className="mt-2">
+            <form className="mt-2" onSubmit={handleSubmit}>
               <div>
-                <Input labelTag="Enter Tag Number" placeholder=" Tag Number*" />
+                <Input 
+                labelTag="Enter Tag Number"
+                 placeholder=" Tag Number*"
+                 inputName="tagNumber"
+                  value={values.tagNumber}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                   />
                 <Input
                   labelTag="Enter Vehicle Number"
                   placeholder=" Vehicle Number*"
+                  inputName="vehicleNumber"
+                  handleChange={handleChange}
+                  value={values.vehicleNumber}
+                  handleBlur={handleBlur}
+
                 />
                 <SelectBox
                   labelTag={"Vehicle Type"}
@@ -44,27 +85,11 @@ export const RegistrationForm = ({handleClose}:RegistrationFormType) => {
                 />
 
                 <div className="mt-3">
-                  <Button className="bg-btn-blue px-8 py-2 rounded-md text-sm text-white">
+                  <Button className="bg-btn-blue px-8 py-2 rounded-md text-sm text-white"
+                   isSubmitting={isSubmitting}>
                     Submit
                   </Button>
                 </div>
-                {/* <SelectBox labelTag={'Tag Number'} options={vehicleDetails.allTagIDs}/>
-
-                                <Input labelTag='Enter Vehicle Number' placeholder='Vehicle Number *'/>
-
-                                <SelectBox labelTag={'Vehicle Type'} options={vehicleType}
-                                initialOption='Select Vehicle Type'
-                                />
-
-                                <SelectBox labelTag={'Organizations'} options={organizations}
-                                initialOption='Select Organizations'
-                                />
-
-                                <div className='mt-3'>
-                                    <Button className='bg-btn-blue px-8 py-2 rounded-md text-sm text-white'>
-                                        Submit
-                                    </Button>
-                                </div> */}
               </div>
             </form>
           </div>
